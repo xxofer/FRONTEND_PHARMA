@@ -1,0 +1,50 @@
+.page {
+  max-width: 900px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 620px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.input {
+  width: 100%;
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.error {
+  color: #b42318;
+  font-size: 12px;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.alerta {
+  margin-bottom: 16px;
+}
+

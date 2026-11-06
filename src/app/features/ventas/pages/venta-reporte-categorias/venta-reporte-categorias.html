@@ -1,0 +1,22 @@
+<section class="page">
+  <header class="page-header">
+    <h2>Reporte de ventas por categoría</h2>
+    <div class="acciones no-imprimir"><a routerLink="/ventas" class="btn">Volver a ventas</a><button type="button" class="btn btn-primary" (click)="imprimir()">🖨 Imprimir reporte</button></div>
+  </header>
+  <p class="nota">Incluye ventas registradas; las ventas anuladas no se suman. La categoría se obtiene del catálogo actual de productos; por eso el reporte refleja la clasificación vigente.</p>
+  @if (error()) { <div class="alerta">{{ error() }}</div> }
+  @if (cargando()) { <p>Calculando reporte…</p> } @else {
+    <div class="card total-card"><span>Importe total registrado</span><strong>{{ totalGeneral() | currency:'PEN':'S/ ' }}</strong></div>
+    <div class="tabla-contenedor">
+      <table class="tabla">
+        <thead><tr><th>Categoría</th><th class="numero">Unidades vendidas</th><th class="numero">Ventas</th><th class="numero">Importe</th></tr></thead>
+        <tbody>
+          @for (fila of resumen(); track fila.categoria) {
+            <tr><td>{{ fila.categoria }}</td><td class="numero">{{ fila.unidades }}</td><td class="numero">{{ fila.operaciones }}</td><td class="numero">{{ fila.importe | currency:'PEN':'S/ ' }}</td></tr>
+          } @empty { <tr><td colspan="4" class="vacio">No hay ventas registradas para resumir.</td></tr> }
+        </tbody>
+        <tfoot><tr><th>Total</th><th class="numero">{{ totalUnidades() }}</th><th></th><th class="numero">{{ totalGeneral() | currency:'PEN':'S/ ' }}</th></tr></tfoot>
+      </table>
+    </div>
+  }
+</section>

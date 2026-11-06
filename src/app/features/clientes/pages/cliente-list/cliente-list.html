@@ -1,0 +1,61 @@
+<section class="page">
+  <header class="page-header">
+    <h2>Clientes</h2>
+    <a *appSiPermiso="'CLIENTES_ESCRIBIR'" routerLink="nuevo" class="btn btn-primary">+ Nuevo cliente</a>
+  </header>
+
+  <div class="toolbar">
+    <input
+      class="input buscador"
+      placeholder="Buscar por DNI, nombres, apellidos o correo…"
+      [value]="filtro()"
+      (input)="filtro.set($any($event.target).value)"
+    />
+  </div>
+
+  @if (error()) {
+    <div class="alerta">{{ error() }}</div>
+  }
+
+  @if (cargando()) {
+    <p>Cargando clientes…</p>
+  } @else {
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th><button class="th-btn" (click)="ordenar('dni')">DNI ↕</button></th>
+          <th><button class="th-btn" (click)="ordenar('apellidos')">Apellidos y nombres ↕</button></th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Estado</th>
+          <th *appSiPermiso="'CLIENTES_ESCRIBIR'">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (c of filtrados(); track c.id) {
+          <tr>
+            <td>{{ c.dni }}</td>
+            <td>{{ c.apellidos }}, {{ c.nombres }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.telefono ?? '—' }}</td>
+            <td>
+              <span class="badge" [class.inactivo]="!c.estado">
+                {{ c.estado ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td *appSiPermiso="'CLIENTES_ESCRIBIR'" class="acciones">
+              <a [routerLink]="[c.id, 'editar']" class="btn">Editar</a>
+              @if (c.estado) {
+                <button class="btn btn-peligro" (click)="eliminar(c)">Dar de baja</button>
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" class="vacio">No hay clientes registrados.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

@@ -1,1 +1,208 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* ===== PharmaSoft: estilo visual moderno ===== */
+
+:root {
+  --azul: #173b67;
+  --azul-hover: #102d50;
+  --dorado: #e8b344;
+  --fondo: #f4f7fb;
+  --superficie: #ffffff;
+  --texto: #243247;
+  --borde: #e1e8f0;
+  --radio: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  color: var(--azul);
+  letter-spacing: -0.3px;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Tarjetas y paneles */
+.card {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 24px;
+  box-shadow: 0 4px 16px rgb(23 59 103 / 6%);
+  margin-bottom: 20px;
+}
+
+/* Campos de texto y selectores */
+.input {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--texto);
+  font: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4c83bd;
+  box-shadow: 0 0 0 3px rgb(76 131 189 / 15%);
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 15px;
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--azul);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s,
+              box-shadow 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 9px rgb(23 59 103 / 10%);
+}
+
+.btn-primary {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--azul-hover);
+}
+
+.btn-peligro {
+  color: #b42318;
+  border-color: #f0c8c5;
+  background: #fffafa;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Tablas */
+.tabla {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.tabla th {
+  background: var(--azul);
+  color: #fff;
+  text-align: left;
+  padding: 13px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tabla td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla tbody tr:hover {
+  background: #f5f8fc;
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Mensajes y estados */
+.alerta {
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border: 1px solid #f2c7c4;
+  border-radius: 10px;
+  background: #fff1f0;
+  color: #a5221a;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.inactivo {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* Cabeceras de las páginas */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.page-header h2 {
+  margin-bottom: 0;
+}
+
+/* Diseño adaptable a móviles */
+@media (max-width: 768px) {
+  .area-main {
+    padding: 14px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .tabla {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .page-header {
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,8 @@
+.nota { color: #6b7280; font-size: 14px; }
+.acciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.total-card { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.total-card strong { font-size: 24px; color: #0f2e5c; }
+.numero { text-align: right; white-space: nowrap; }
+.vacio { text-align: center; color: #6b7280; padding: 24px; }
+.tabla-contenedor { overflow-x: auto; }
+@media print { .total-card { border: 1px solid #999; } }

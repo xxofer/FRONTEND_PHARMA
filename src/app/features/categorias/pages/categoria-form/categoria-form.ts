@@ -1,0 +1,8 @@
+import { Component,inject,input,OnInit,signal } from '@angular/core';
+import { ReactiveFormsModule,NonNullableFormBuilder,Validators } from '@angular/forms';
+import { Router,RouterLink } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { CategoriaService } from '../../services/categoria-service'; import { CategoriaRequest } from '../../models/categoria.model';
+import { mensajeError } from '../../../../core/utils/http-error';
+@Component({selector:'app-categoria-form',imports:[ReactiveFormsModule,RouterLink],templateUrl:'./categoria-form.html',styleUrl:'./categoria-form.css'})
+export class CategoriaForm implements OnInit {private fb=inject(NonNullableFormBuilder);private service=inject(CategoriaService);private router=inject(Router);readonly id=input<string>();protected error=signal<string|null>(null);protected form=this.fb.group({nombre:['',[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],descripcion:['',[Validators.maxLength(200)]],estado:[true]});protected esEdicion(){return !!this.id()} ngOnInit(){const id=this.id();if(id)this.service.obtener(+id).subscribe({next:c=>this.form.setValue({nombre:c.nombre,descripcion:c.descripcion??'',estado:c.estado}),error:e=>this.error.set(mensajeError(e))})} guardar(){if(this.form.invalid){this.form.markAllAsTouched();return}const v=this.form.getRawValue();const dto:CategoriaRequest={nombre:v.nombre.trim(),descripcion:v.descripcion.trim()||null,estado:v.estado};const id=this.id();(id?this.service.actualizar(+id,dto):this.service.crear(dto)).subscribe({next:()=>this.router.navigate(['/categorias']),error:(e:HttpErrorResponse)=>this.error.set(mensajeError(e))})}}

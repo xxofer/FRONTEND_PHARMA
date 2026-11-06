@@ -1,0 +1,87 @@
+.page {
+  max-width: 1400px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.buscador {
+  max-width: 420px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tabla th,
+.tabla td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tabla th {
+  background: #0f2e5c;
+  color: #fff;
+}
+
+.tabla tbody tr:hover {
+  background: #f8fafc;
+}
+
+.th-btn {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge.inactivo {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.vacio {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+}
+
+.alerta {
+  margin-bottom: 16px;
+}

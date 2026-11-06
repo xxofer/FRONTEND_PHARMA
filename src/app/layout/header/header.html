@@ -1,0 +1,9 @@
+<header class="header">
+  <button type="button" class="btn-menu" aria-label="Mostrar u ocultar menú" (click)="toggleMenu.emit()">☰</button>
+  <a routerLink="/inicio" class="marca">PharmaSoft</a>
+  <nav class="menubar"><a routerLink="/inicio">Inicio</a><a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">API</a></nav>
+  @if (auth.sesion(); as s) {
+    <span class="usuario"><strong>{{ s.nombreCompleto }}</strong><small>{{ s.roles.join(' · ') }} · expira {{ s.expiraEn | date:'HH:mm:ss' }}</small></span>
+    <button type="button" class="btn-salir" (click)="salir()">Cerrar sesión</button>
+  }
+</header>

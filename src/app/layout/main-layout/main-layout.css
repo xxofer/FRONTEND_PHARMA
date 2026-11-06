@@ -1,0 +1,13 @@
+.shell { display:grid; grid-template-columns:240px 1fr; grid-template-rows:64px 1fr; grid-template-areas:'header header' 'sidebar main'; min-height:100vh; }
+.shell.colapsado { grid-template-columns:0 1fr; }
+.area-header { grid-area:header; }
+.area-sidebar { grid-area:sidebar; overflow:hidden; }
+.area-main { grid-area:main; padding:24px; background:#f4f6fa; }
+
+
+/* Al imprimir solo queda el contenido de la página, nunca el encabezado ni el menú lateral. */
+@media print {
+  .shell { display: block !important; min-height: 0 !important; }
+  .area-header, .area-sidebar { display: none !important; }
+  .area-main { padding: 0 !important; background: #fff !important; }
+}
